@@ -1,0 +1,35 @@
+{
+  "name": "nginject-loader",
+  "version": "0.0.1",
+  "description": "Webpack loader where explicit @ngInject comment creates pre-minification $inject property",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bholloway/nginject-loader"
+  },
+  "keywords": [
+    "webpack",
+    "loader",
+    "annotate",
+    "ng-annotate",
+    "ngInject",
+    "angular",
+    "minify",
+    "preminifiy",
+    "minification",
+    "preminification"
+  ],
+  "author": "bholloway",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bholloway/nginject-loader/issues"
+  },
+  "homepage": "https://github.com/bholloway/nginject-loader",
+  "dependencies": {
+    "browserify-esprima-tools": "^1.6.0",
+    "browserify-nginject": "^1.5.0",
+    "convert-source-map": "^1.1.1",
+    "loader-utils": "^0.2.11"
+  }
+}
