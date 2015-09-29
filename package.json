@@ -27,9 +27,9 @@
   },
   "homepage": "https://github.com/bholloway/nginject-loader",
   "dependencies": {
-    "browserify-esprima-tools": "^1.6.0",
-    "browserify-nginject": "^1.5.0",
-    "convert-source-map": "^1.1.1",
-    "loader-utils": "^0.2.11"
+    "escodegen": "^1.7.0",
+    "esprima": "^2.6.0",
+    "loader-utils": "^0.2.11",
+    "sourcemap-to-ast": "0.0.2"
   }
 }
