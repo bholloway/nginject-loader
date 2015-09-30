@@ -4,7 +4,7 @@
 
 Webpack loader where explicit @ngInject comment creates pre-minification $inject property
 
-Handles explicit annotation more gracefully than [ng-annotate](https://www.npmjs.com/package/ng-annotate-loader). However it is slower when inferring angular structures (`inferAngular` option). By default you will **also need ng-annotate**.
+Handles explicit annotation more gracefully than [ng-annotate](https://www.npmjs.com/package/ng-annotate-loader). However it is slower when inferring angular structures (`inferAngular` option). By default you may **also need ng-annotate**.
 
 ## Usage
 
@@ -33,4 +33,4 @@ module.exports = {
 
 ### Options
 
-* `inferAngular` allows basic angular structures to be annotated without explicit annotation. Does **not** include ui-router structures such as `resolve`. Disabled by default; you will **also need ng-annotate** unless you enable this option.
+* `inferAngular` allows basic angular structures to be annotated without explicit annotation. Does **not** include ui-router structures such as `resolve`. Disabled by default; you may **also need ng-annotate** unless you enable this option.
