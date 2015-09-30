@@ -51,12 +51,12 @@ module.exports = function loader(content, sourceMap) {
         sourceMap        : useSourceMap,
         sourceMapWithCode: useSourceMap,
         format           : options.format || {}
-      }),
-      outMap = JSON.parse(output.map.toString());
+      });
 
   // complete
   if (useSourceMap) {
-    this.callback(null, output.code, outMap);
+    var outputMapObj = JSON.parse(output.map.toString());
+    this.callback(null, output.code, outputMapObj);
   } else {
     return output;
   }
