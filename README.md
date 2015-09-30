@@ -11,7 +11,7 @@ Handles explicit annotation more gracefully than [ng-annotate](https://www.npmjs
 Refer to the Webpack documentation on [using loaders](http://webpack.github.io/docs/using-loaders.html).
 
 ``` javascript
-var css = require('!nginject!./file.js');
+var css = require('!ng-annotate!nginject!./file.js');
 ```
 
 ### Apply via webpack config
