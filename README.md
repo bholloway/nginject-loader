@@ -4,7 +4,11 @@
 
 Webpack loader where explicit @ngInject comment creates pre-minification $inject property
 
-Handles explicit annotation more gracefully than [ng-annotate](https://www.npmjs.com/package/ng-annotate-loader). However it is slower when inferring angular structures (`inferAngular` option). By default you may **also need ng-annotate**.
+Handles explicit annotation in comment blocks which [ng-annotate](https://www.npmjs.com/package/ng-annotate-loader) sometimes cannot where there is ES6 syntax involved.
+
+However it is quite **slow** compare to ng-annotate. If you can use the [`"ngInject";` (directive prologue) syntax](https://github.com/olov/ng-annotate#es6-and-typescript-support) you will be much happier with ng-annotate alone.
+
+The slowdown is most pronounced when inferring angular structures (`inferAngular` option). By default you may **also need ng-annotate**. Inference is not as fully featured as ng-annotate.
 
 ## Usage
 
