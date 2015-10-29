@@ -1,6 +1,6 @@
 {
   "name": "nginject-loader",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Webpack loader where explicit @ngInject comment creates pre-minification $inject property",
   "main": "index.js",
   "scripts": {},
