@@ -14,7 +14,7 @@ The speed deficit is most pronounced when inferring angular structures (`inferAn
 
 This loader is primarily for support of block comment `@ngInject` in legacy code. If a solution to migrate such code to `"ngInject"` syntax becomes available this loader may be **depricated**.
 
-Please comment on [this issue](https://github.com/bholloway/nginject-loader/issues/2) if your use case cannot suffer migration to `"ngInject"` syntaxv .
+Please comment on [this issue](https://github.com/bholloway/nginject-loader/issues/2) if your use case cannot suffer migration to `"ngInject"` syntax.
 
 
 ## Usage
