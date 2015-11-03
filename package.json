@@ -2,7 +2,7 @@
   "name": "nginject-loader",
   "version": "2.0.0-rc",
   "private": true,
-  "description": "Webpack loader where explicit @ngInject comment creates pre-minification $inject property",
+  "description": "Webpack loader to migrate from legacy @ngInject pre-minifier syntax to \"ngInject\" syntax",
   "main": "index.js",
   "scripts": {},
   "repository": {

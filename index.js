@@ -3,13 +3,15 @@
 var loaderUtils = require('loader-utils'),
     migrate     = require('nginject-migrate');
 
+var PACKAGE_NAME = require('./package.json').name;
+
 /**
  * Webpack loader where explicit @ngInject comment creates pre-minification $inject property.
- * @param {string} content Css content
+ * @param {string} content JS content
  * @param {object} sourceMap The source-map
  * @returns {string|String}
  */
-module.exports = function loader(content, sourceMap) {
+function loader(content, sourceMap) {
   /* jshint validthis:true */
 
   // loader result is cacheable
@@ -24,8 +26,20 @@ module.exports = function loader(content, sourceMap) {
   var pending = migrate.processSync(content, {
     filename : filename,
     sourceMap: useMap && (sourceMap || true),
-    quoteChar: options.quoteChar
+    quoteChar: options.singleQuote ? '\'' : '"'
   });
+
+  // emit deprecation warning
+  if ((pending.isChanged) && (options.deprecate)) {
+    var text = '  @ngInject doctag is deprecated, use "ngInject" string directive to annotate [' + PACKAGE_NAME + ']';
+    this.emitWarning(text);
+  }
+
+  // emit errors
+  if (pending.errors.length) {
+    var text = pending.errors.map(indent).join('\n');
+    this.emitError(text);
+  }
 
   // complete
   if (useMap) {
@@ -33,4 +47,10 @@ module.exports = function loader(content, sourceMap) {
   } else {
     return pending.content;
   }
-};
+}
+
+module.exports = loader;
+
+function indent(value) {
+  return '  ' + value;
+}

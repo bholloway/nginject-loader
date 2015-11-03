@@ -2,20 +2,27 @@
 
 [![NPM](https://nodei.co/npm/nginject-loader.png)](http://github.com/bholloway/nginject-loader)
 
-Webpack loader where explicit @ngInject comment creates pre-minification $inject property
+Webpack loader to migrate from legacy @ngInject pre-minifier syntax to \"ngInject\" syntax
 
-Handles explicit annotation in comment blocks which [ng-annotate](https://www.npmjs.com/package/ng-annotate-loader) cannot when there is ES6 syntax involved.
+Use in conjunction with [ng-annotate](https://www.npmjs.com/package/ng-annotate-loader) to annotate your AngularJS pre-minification.
 
-However it is quite **slow** compared to ng-annotate. It is recommended that you use the [`"ngInject";` (directive prologue) syntax](https://github.com/olov/ng-annotate#es6-and-typescript-support) with ng-annotate alone.
+## Rationale
 
-The speed deficit is most pronounced when inferring angular structures (`inferAngular` option). By default you should disable this and **also use ng-annotate**. But if you use inference you will find it not as fully featured as ng-annotate.
+The [ng-annotate](https://github.com/olov/ng-annotate) project is the seminal pre-minifier for AngularJS. Initially it used the `@ngInject` annotation doctag but has more recently moved to an `"ngInject"` [directive annotation](https://github.com/olov/ng-annotate#es6-and-typescript-support).
 
-## Limitation
+The new annotation syntax plays much better with ES6 and is considered best practice going forward.
 
-This loader is primarily for support of block comment `@ngInject` in legacy code. If a solution to migrate such code to `"ngInject"` syntax becomes available this loader may be **depricated**.
+However if you have legacy code you will want to keep operating with the `@ngInject` syntax and make a change over time.
+
+This loader reliably detects `@ngInject` annotations following transpilation. It then rewrites to the new `"ngInject"` annotation and offers a deprecation warning.
+
+## Evolution
+
+This loader is now **primarily a migration tool** for legacy `@ngInject` doctag annotation.
+ 
+Previous versions were more of an ng-annotate alternative and will be **deprecated**.
 
 Please comment on [this issue](https://github.com/bholloway/nginject-loader/issues/2) if your use case cannot suffer migration to `"ngInject"` syntax.
-
 
 ## Usage
 
@@ -35,13 +42,21 @@ module.exports = {
     loaders: [
       {
         test   : /\.js$/,
-        loaders: ['ng-annotate', 'nginject']
+        loaders: ['ng-annotate', 'nginject?deprecate' /*...transpiler? */]
       }
     ]
   }
 };
 ```
 
+Note that the `deprecate` option is shown is strongly encouraged.
+
+If you are using a transpiler then place it before (to the right of) `nginject-loader` as shown.
+
 ### Options
 
-* `inferAngular` allows basic angular structures to be annotated without explicit annotation. Does **not** include ui-router structures such as `resolve`. Disabled by default; you may **also need ng-annotate** unless you enable this option.
+* `deprecate` implies that a warning should be generated whenever the loader needs to operate. Use this to help migration from `@ngInject` to `"ngInject"`. It is not activiated by default but is strongly encouraged.
+
+* `sourceMap` generate a source-map.
+
+* `singleQuote` controls the character which is used to deliniate the `"ngInject"` directive.
