@@ -1,6 +1,7 @@
 {
   "name": "nginject-loader",
-  "version": "1.0.0",
+  "version": "2.0.0-rc",
+  "private": true,
   "description": "Webpack loader where explicit @ngInject comment creates pre-minification $inject property",
   "main": "index.js",
   "scripts": {},
@@ -27,9 +28,7 @@
   },
   "homepage": "https://github.com/bholloway/nginject-loader",
   "dependencies": {
-    "escodegen": "^1.7.0",
-    "esprima": "^2.6.0",
     "loader-utils": "^0.2.11",
-    "sourcemap-to-ast": "0.0.2"
+    "nginject-migrate": "^0.0.1"
   }
 }
