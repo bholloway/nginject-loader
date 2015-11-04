@@ -31,7 +31,7 @@ function loader(content, sourceMap) {
 
   // emit deprecation warning
   if ((pending.isChanged) && (options.deprecate)) {
-    var text = '  @ngInject doctag is deprecated, use "ngInject" string directive to annotate [' + PACKAGE_NAME + ']';
+    var text = '  ' + PACKAGE_NAME + ': @ngInject doctag is deprecated, use "ngInject" string directive instead';
     this.emitWarning(text);
   }
 
