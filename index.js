@@ -1,5 +1,7 @@
 'use strict';
 
+var path = require('path');
+
 var loaderUtils = require('loader-utils'),
     migrate     = require('nginject-migrate');
 
@@ -18,7 +20,7 @@ function loader(content, sourceMap) {
   this.cacheable();
 
   // path of the file being processed
-  var filename = this.resourcePath,
+  var filename = path.relative(this.options.context || process.cwd(), this.resourcePath).replace(/\\/g, '/'),
       options  = loaderUtils.parseQuery(this.query),
       useMap   = loader.sourceMap || options.sourceMap;
 
